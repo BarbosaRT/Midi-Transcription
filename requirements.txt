@@ -1,0 +1,8 @@
+requests
+music21
+pandas
+beautifulsoup4
+lxml
+pretty_midi
+scikit-learn
+OpenNMT-py

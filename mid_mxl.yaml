@@ -1,0 +1,53 @@
+## Where the samples will be written
+save_data: datasets/run/examples
+## Where the vocab(s) will be written
+src_vocab: datasets/run/example.vocab.src
+tgt_vocab: datasets/run/example.vocab.tgt
+# Prevent overwriting existing files in the folder
+overwrite: False
+
+# Corpus opts:
+data:
+    corpus_1:
+        path_src: datasets/src-train.txt
+        path_tgt: datasets/tgt-train.txt
+    valid:
+        path_src: datasets/src-val.txt
+        path_tgt: datasets/tgt-val.txt
+
+# Train on a single GPU
+world_size: 1
+gpu_ranks: [0]
+
+# Where to save the checkpoints
+save_model: datasets/run/model
+save_checkpoint_steps: 10000
+train_steps: 150000
+valid_steps: 1000
+
+# Optimization
+model_dtype: "fp16"
+optim: "adam"
+learning_rate: 2
+warmup_steps: 8000
+decay_method: "noam"
+adam_beta2: 0.998
+max_grad_norm: 0
+label_smoothing: 0.1
+param_init: 0
+param_init_glorot: true
+normalization: "tokens"
+
+# Model
+encoder_type: transformer
+decoder_type: transformer
+position_encoding: true
+enc_layers: 4
+dec_layers: 4
+heads: 4
+hidden_size: 256
+word_vec_size: 256
+transformer_ff: 512
+dropout_steps: [0]
+dropout: [0.2]
+attention_dropout: [0.2]
